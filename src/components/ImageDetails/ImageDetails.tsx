@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { Image, ImageStats } from "../../interfaces";
 
 const formatter = new Intl.NumberFormat("en-US", { style: "decimal" });
@@ -39,23 +38,37 @@ function ImageDetails({
               </svg>
             </Header>
 
-            <div>
-              <img
-                src={selectedImage.urls.small}
-                alt="Selected Image"
-                className="image"
-              />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "1rem",
+              }}
+            >
+              <div style={{ width: "200px", height: "200px" }}>
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "1rem",
+                  }}
+                  src={selectedImage.urls.small}
+                  alt="Selected Image"
+                  className="image"
+                />
+              </div>
+              {imageStats ? (
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div>likes: {formatter.format(imageStats.likes)}</div>
+                  <div>downloads: {formatter.format(imageStats.downloads)}</div>
+                  <div>views: {formatter.format(imageStats.views)}</div>
+                </div>
+              ) : (
+                <div>Loading Stats...</div>
+              )}
             </div>
-
-            {imageStats ? (
-              <>
-                <div>likes: {formatter.format(imageStats.likes)}</div>
-                <div>downloads: {formatter.format(imageStats.downloads)}</div>
-                <div>views: {formatter.format(imageStats.views)}</div>
-              </>
-            ) : (
-              <div>Loading Stats...</div>
-            )}
           </ShareLinkContainer>
 
           <ContainerOverlay

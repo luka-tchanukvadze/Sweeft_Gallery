@@ -1,7 +1,6 @@
-import React, { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRef } from "react";
 import axios from "axios";
-import ImageDetails from "../../components/ImageDetails/ImageDetails";
 import { Image, ImageStats } from "../../interfaces";
 import ImageViewer from "../../components/ImageViewer/ImageViewer";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -17,13 +16,6 @@ function MainPage({ loading }: any) {
     setHistory((prev) => [...new Set([...prev, newQuery])]);
     setQuery(newQuery);
     e.preventDefault();
-  };
-  // const [imgDetails, setImgDetails] = useState<sn>(false);
-
-  const handleSelection = (selection: string) => {
-    if (inputField.current) {
-      inputField.current.value = selection;
-    }
   };
 
   const [selectedImage, setSelectedImage] = useState<Image | null>(null);
@@ -51,16 +43,9 @@ function MainPage({ loading }: any) {
     fetchData();
   }, [selectedImage]);
 
-  // const handleImgDetails = (image: Image) => {
-  //   setSelectedImage(image);
-  //   setImgDetails(true);
-  // };
-
   return (
     <div className="container" style={{ marginBottom: "19rem" }}>
       <h1 className="title">Search Image</h1>
-      {/* {errorMsg && <p className='error-msg'>{errorMsg}</p>} */}
-
       <div className="search-section">
         <form onSubmit={handleSearch}>
           <input
@@ -70,12 +55,6 @@ function MainPage({ loading }: any) {
             ref={inputField}
           />
         </form>
-      </div>
-
-      <div className="filters">
-        <div onClick={() => handleSelection("nature")}>nature</div>
-        <div onClick={() => handleSelection("birds")}>birds</div>
-        <div onClick={() => handleSelection("cats")}>cats</div>
       </div>
 
       {query && <ImageViewer query={query} />}
@@ -92,12 +71,6 @@ function MainPage({ loading }: any) {
           loading...
         </div>
       )}
-      {/* <ImageDetails
-        imageStats={activeImageStats}
-        // imgDetails={imgDetails}
-        setImgDetails={setImgDetails}
-        selectedImage={selectedImage}
-      /> */}
     </div>
   );
 }
