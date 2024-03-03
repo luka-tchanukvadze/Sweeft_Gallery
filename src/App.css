@@ -64,6 +64,7 @@
   border-radius: 10px;
   transition: transform 0.5s;
   object-fit: cover;
+  
 }
 
 .images .image:hover {
@@ -83,6 +84,8 @@
   .search-section .search-input {
     width: 400px;
   }
+}
+@media (min-width: 200px) {
 
   .images {
     grid-template-columns: 1fr;
