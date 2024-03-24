@@ -23,6 +23,8 @@ function MainPage({ loading }: any) {
     null
   );
 
+  console.log(setSelectedImage, activeImageStats, history);
+
   useEffect(() => {
     if (!selectedImage) return;
 

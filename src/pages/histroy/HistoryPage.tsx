@@ -6,6 +6,8 @@ function HistoryPage({ loading }: any) {
   const [query, setQuery] = useState("");
   const [history, setHistory] = useLocalStorage<string[]>("history", []);
 
+  console.log(setHistory);
+
   return (
     <div className="container" style={{ marginBottom: "19rem" }}>
       <h1 className="title">Your history</h1>

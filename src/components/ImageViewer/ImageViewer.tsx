@@ -1,4 +1,4 @@
-import React, { FC, Ref, useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Image, ImageCache, ImageStats } from "../../interfaces";
 import axios from "axios";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -21,7 +21,7 @@ function ImageViewer({ query }: ImageViewerProps) {
   const [activeImageStats, setActiveImageStats] = useState<ImageStats | null>(
     null
   );
-
+  console.log(errorMsg);
   useEffect(() => {
     if (!selectedImage) return;
 
